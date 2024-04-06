@@ -1,38 +1,107 @@
+/* App.css */
+
+/* General container styles */
 .App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the total width */
+}
+
+/* Typography styles */
+.App h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Form and input styles */
+.post-form {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding in the total width */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Button styles */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add a smooth transition to the background color */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Post and image styles */
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.post {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Ensure children elements don't overflow the post container */
+}
+
+.post img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  object-fit: cover; /* Ensure the image covers the entire width and height */
+}
+
+/* Actions and comments styles */
+.actions {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 10px;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.comments {
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.comments p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Avatar styles */
+.Avatar {
+  margin-right: 5px;
+}
+
+/* Comments input styles */
+.comments input[type="text"] {
+  width: calc(100% - 30px);
+  margin-right: 10px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .post-form {
+    grid-template-columns: 1fr;
   }
 }
