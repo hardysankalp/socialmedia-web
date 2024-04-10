@@ -7,6 +7,7 @@ export default function App() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
+  const [commentText, setCommentText] = useState('');
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
@@ -34,18 +35,24 @@ export default function App() {
     }));
   };
 
-  const handleComment = (postId, comment) => {
-    setPosts(posts.map(post => {
-      if (post.id === postId) {
-        return { ...post, comments: [...post.comments, comment] };
-      }
-      return post;
-    }));
+  const handleComment = (postId) => {
+    if (commentText.trim() !== '') {
+      setPosts(posts.map(post => {
+        if (post.id === postId) {
+          return { ...post, comments: [...post.comments, commentText] };
+        }
+        return post;
+      }));
+      setCommentText('');
+    }
   };
 
   return (
     <div className="App">
-      <h1>My Social Media Page</h1>
+      <div className="header">
+        <h1>My Social Media Page</h1>
+        <button className="sign-in-button">Sign In</button>
+      </div>
       <div className="post-form">
         <input type="text" placeholder="Enter Title" value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea placeholder="Enter Content" value={content} onChange={(e) => setContent(e.target.value)} />
@@ -60,7 +67,8 @@ export default function App() {
             <p>{post.content}</p>
             <div className="actions">
               <button onClick={() => handleLike(post.id)}>Like {post.likes}</button>
-              <input type="text" placeholder="Add a comment" onKeyPress={(e) => e.key === 'Enter' && handleComment(post.id, e.target.value)} />
+              <input type="text" placeholder="Add a comment" value={commentText} onChange={(e) => setCommentText(e.target.value)} />
+              <button onClick={() => handleComment(post.id)}>Submit Comment</button>
               <div className="comments">
                 {post.comments.map((comment, index) => (
                   <p key={index}><Avatar name="User" size="20" round /> {comment}</p>
@@ -69,6 +77,9 @@ export default function App() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="footer">
+        © 2024 My Social Media Page. All rights reserved.
       </div>
     </div>
   );
