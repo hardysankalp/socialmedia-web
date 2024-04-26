@@ -1,5 +1,7 @@
-My Social Media Page
+*My Social Media Page*
+<br>
 Description
+<br>
 My Social Media Page is a simple social media platform where users can create posts, like posts, and comment on posts. It provides basic functionality for sharing content and interacting with other users.
 
 Features
